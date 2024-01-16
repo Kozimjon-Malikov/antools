@@ -5,18 +5,29 @@ navigation.addEventListener("click", () => {
   navbar.classList.toggle("active__navbar");
   navigation.classList.toggle("active__dots");
 });
-  // Wrap your code in a function
-  function handleScroll() {
-    var mybutton = document.querySelector(".btn-arrow");
-    // Use both properties to cover all browsers
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    function scrollHandler() {
+      // Handle scroll for button
+      var mybutton = document.querySelector(".btn-arrow");
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
-    if (scrollTop > 20) {
+      if (scrollTop > 20) {
         mybutton.style.display = "block";
-    } else {
+      } else {
         mybutton.style.display = "none";
+      }
+
+      // Handle scroll for header
+      let header = document.querySelector('header');
+      if (scrollTop > 20) {
+        header.classList.add('fixed');
+      } else {
+        header.classList.remove('fixed');
+      }
     }
-  }
+    window.addEventListener('scroll', scrollHandler);
+
+    // Initial call to handle the scroll position when the page loads
+    scrollHandler();
   function header(){
     let header=document.querySelector('header');
     if(document.documentElement.scrollTop>20 || document.body.scrollTop>20){
@@ -26,8 +37,8 @@ navigation.addEventListener("click", () => {
     }
   }
   // Attach the function to the window's scroll event
-  window.onscroll = handleScroll;
+
   window.onscroll=header;
   // Initial call to handle the scroll position when the page loads
-  handleScroll();
+
   header();
