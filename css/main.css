@@ -199,6 +199,8 @@ form {
   background-color: var(--bg-orange);
   border-radius: 8px;
   color: var(--text-white);
+  border:none;
+  outline:none;
 }
 
 .social {
